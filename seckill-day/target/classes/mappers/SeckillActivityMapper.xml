@@ -1,0 +1,171 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.jiuzhang.seckill.db.mappers.SeckillActivityMapper">
+    <resultMap id="BaseResultMap" type="com.jiuzhang.seckill.db.po.SeckillActivity">
+        <id column="id" jdbcType="BIGINT" property="id"/>
+        <result column="name" jdbcType="VARCHAR" property="name"/>
+        <result column="commodity_id" jdbcType="BIGINT" property="commodityId"/>
+        <result column="old_price" jdbcType="DECIMAL" property="oldPrice"/>
+        <result column="seckill_price" jdbcType="DECIMAL" property="seckillPrice"/>
+        <result column="activity_status" jdbcType="INTEGER" property="activityStatus"/>
+        <result column="start_time" jdbcType="TIMESTAMP" property="startTime"/>
+        <result column="end_time" jdbcType="TIMESTAMP" property="endTime"/>
+        <result column="total_stock" jdbcType="BIGINT" property="totalStock"/>
+        <result column="available_stock" jdbcType="INTEGER" property="availableStock"/>
+        <result column="lock_stock" jdbcType="BIGINT" property="lockStock"/>
+    </resultMap>
+    <sql id="Base_Column_List">
+    id, name, commodity_id, old_price, seckill_price, activity_status, start_time, end_time, 
+    total_stock, available_stock, lock_stock
+  </sql>
+    <select id="selectByPrimaryKey" parameterType="java.lang.Long" resultMap="BaseResultMap">
+        select
+        <include refid="Base_Column_List"/>
+        from seckill_activity
+        where id = #{id,jdbcType=BIGINT}
+    </select>
+    <delete id="deleteByPrimaryKey" parameterType="java.lang.Long">
+    delete from seckill_activity
+    where id = #{id,jdbcType=BIGINT}
+  </delete>
+    <insert id="insert" parameterType="com.jiuzhang.seckill.db.po.SeckillActivity">
+    insert into seckill_activity (id, name, commodity_id, 
+      old_price, seckill_price, activity_status, 
+      start_time, end_time, total_stock, 
+      available_stock, lock_stock)
+    values (#{id,jdbcType=BIGINT}, #{name,jdbcType=VARCHAR}, #{commodityId,jdbcType=BIGINT}, 
+      #{oldPrice,jdbcType=DECIMAL}, #{seckillPrice,jdbcType=DECIMAL}, #{activityStatus,jdbcType=INTEGER}, 
+      #{startTime,jdbcType=TIMESTAMP}, #{endTime,jdbcType=TIMESTAMP}, #{totalStock,jdbcType=BIGINT}, 
+      #{availableStock,jdbcType=INTEGER}, #{lockStock,jdbcType=BIGINT})
+  </insert>
+    <insert id="insertSelective" parameterType="com.jiuzhang.seckill.db.po.SeckillActivity">
+        insert into seckill_activity
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="id != null">
+                id,
+            </if>
+            <if test="name != null">
+                name,
+            </if>
+            <if test="commodityId != null">
+                commodity_id,
+            </if>
+            <if test="oldPrice != null">
+                old_price,
+            </if>
+            <if test="seckillPrice != null">
+                seckill_price,
+            </if>
+            <if test="activityStatus != null">
+                activity_status,
+            </if>
+            <if test="startTime != null">
+                start_time,
+            </if>
+            <if test="endTime != null">
+                end_time,
+            </if>
+            <if test="totalStock != null">
+                total_stock,
+            </if>
+            <if test="availableStock != null">
+                available_stock,
+            </if>
+            <if test="lockStock != null">
+                lock_stock,
+            </if>
+        </trim>
+        <trim prefix="values (" suffix=")" suffixOverrides=",">
+            <if test="id != null">
+                #{id,jdbcType=BIGINT},
+            </if>
+            <if test="name != null">
+                #{name,jdbcType=VARCHAR},
+            </if>
+            <if test="commodityId != null">
+                #{commodityId,jdbcType=BIGINT},
+            </if>
+            <if test="oldPrice != null">
+                #{oldPrice,jdbcType=DECIMAL},
+            </if>
+            <if test="seckillPrice != null">
+                #{seckillPrice,jdbcType=DECIMAL},
+            </if>
+            <if test="activityStatus != null">
+                #{activityStatus,jdbcType=INTEGER},
+            </if>
+            <if test="startTime != null">
+                #{startTime,jdbcType=TIMESTAMP},
+            </if>
+            <if test="endTime != null">
+                #{endTime,jdbcType=TIMESTAMP},
+            </if>
+            <if test="totalStock != null">
+                #{totalStock,jdbcType=BIGINT},
+            </if>
+            <if test="availableStock != null">
+                #{availableStock,jdbcType=INTEGER},
+            </if>
+            <if test="lockStock != null">
+                #{lockStock,jdbcType=BIGINT},
+            </if>
+        </trim>
+    </insert>
+    <update id="updateByPrimaryKeySelective" parameterType="com.jiuzhang.seckill.db.po.SeckillActivity">
+        update seckill_activity
+        <set>
+            <if test="name != null">
+                name = #{name,jdbcType=VARCHAR},
+            </if>
+            <if test="commodityId != null">
+                commodity_id = #{commodityId,jdbcType=BIGINT},
+            </if>
+            <if test="oldPrice != null">
+                old_price = #{oldPrice,jdbcType=DECIMAL},
+            </if>
+            <if test="seckillPrice != null">
+                seckill_price = #{seckillPrice,jdbcType=DECIMAL},
+            </if>
+            <if test="activityStatus != null">
+                activity_status = #{activityStatus,jdbcType=INTEGER},
+            </if>
+            <if test="startTime != null">
+                start_time = #{startTime,jdbcType=TIMESTAMP},
+            </if>
+            <if test="endTime != null">
+                end_time = #{endTime,jdbcType=TIMESTAMP},
+            </if>
+            <if test="totalStock != null">
+                total_stock = #{totalStock,jdbcType=BIGINT},
+            </if>
+            <if test="availableStock != null">
+                available_stock = #{availableStock,jdbcType=INTEGER},
+            </if>
+            <if test="lockStock != null">
+                lock_stock = #{lockStock,jdbcType=BIGINT},
+            </if>
+        </set>
+        where id = #{id,jdbcType=BIGINT}
+    </update>
+    <update id="updateByPrimaryKey" parameterType="com.jiuzhang.seckill.db.po.SeckillActivity">
+    update seckill_activity
+    set name = #{name,jdbcType=VARCHAR},
+      commodity_id = #{commodityId,jdbcType=BIGINT},
+      old_price = #{oldPrice,jdbcType=DECIMAL},
+      seckill_price = #{seckillPrice,jdbcType=DECIMAL},
+      activity_status = #{activityStatus,jdbcType=INTEGER},
+      start_time = #{startTime,jdbcType=TIMESTAMP},
+      end_time = #{endTime,jdbcType=TIMESTAMP},
+      total_stock = #{totalStock,jdbcType=BIGINT},
+      available_stock = #{availableStock,jdbcType=INTEGER},
+      lock_stock = #{lockStock,jdbcType=BIGINT}
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+
+    <select id="querySeckillActivitysByStatus" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+        select
+        <include refid="Base_Column_List"/>
+        from seckill_activity where activity_status = #{id,jdbcType=SMALLINT}
+    </select>
+
+</mapper>
