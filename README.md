@@ -41,7 +41,7 @@
 
 ## 秒杀流程
 
-![img](file:///C:\Users\61\AppData\Roaming\Tencent\Users\1349768428\QQ\WinTemp\RichOle\LIR9UFRVM5{$~]6$L~L[MPT.png)
+![SharedScreenshot.jpg](https://s2.loli.net/2021/12/28/npqy9StOgIb3RrQ.jpg)
 
 ## QuickStart
 
@@ -50,3 +50,7 @@
 - 运行 SQL 脚本生成数据库
 - 修改 application.properties 配置文件，修改数据库连接配置
 - 通过 springboot 启动项目
+
+## 联系作者
+添加个人微信号发送关键词【seckill】获取更多源码
+![image.png](https://s2.loli.net/2021/12/28/1AMsFGugKapqdZ2.png)
